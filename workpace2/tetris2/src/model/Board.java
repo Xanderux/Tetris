@@ -40,6 +40,7 @@ public class Board {
 	private Point pieceCenter = new Point(DROP_X, DROP_Y);
 
 	private Piece currentPiece;
+	private Piece pieceSaved;
 
 	private BoardCell[][] board = new BoardCell[WIDTH][HEIGHT];
 
@@ -193,6 +194,22 @@ public class Board {
 	private void resetPieceCenter() {
 		pieceCenter.x = DROP_X;
 		pieceCenter.y = DROP_Y;
+	}
+
+	public Piece getCurrentPiece() {
+		return currentPiece;
+	}
+
+	public void deleteCurrentPiece() {
+		currentPiece = null;
+	}
+
+	public Piece getPieceSauvegardee() {
+		return pieceSaved;
+	}
+
+	public void setPieceSauvegardee(Piece pieceSauvegardee) {
+		this.pieceSaved = pieceSauvegardee;
 	}
 
 }

@@ -6,16 +6,33 @@ public class Game {
 
 	private final Board board;
 	private Piece nextPiece;
+	private Piece pieceSaved;
 
 	private boolean playing = false;
 	private boolean paused = false;
 	private boolean dropping = false;
 	private boolean gameOver = false;
+	private boolean saved = false;
+
+	private boolean scoreRecovered = false;
 
 	private int freeFallIterations;
+
 	private int totalScore;
+	private ListeScores listeScores;
 
 	public Game() {
+		listeScores = new ListeScores();
+		try {
+			if (!scoreRecovered) {
+				listeScores.recupererScores();
+				scoreRecovered = true;
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		board = new Board();
 	}
 
@@ -114,6 +131,46 @@ public class Game {
 
 	public boolean isDropping() {
 		return dropping;
+	}
+
+	public ListeScores getListeScores() {
+		return listeScores;
+	}
+
+	public Piece getPieceSauvegardee() {
+		return pieceSaved;
+	}
+
+	public void savedPiece() {
+		pieceSaved = new Piece(board.getCurrentPiece().getType(),board.getCurrentPiece().getType().getPoints(), true );
+		board.deleteCurrentPiece();
+		dropping = false;
+		saved = true;
+		board.setCurrentPiece(nextPiece);
+		nextPiece = Piece.getRandomPiece();
+		freeFallIterations = 0;
+
+	}
+	
+	public void playSavedPiece() {
+		if(pieceSaved != null) {
+		board.deleteCurrentPiece();
+		board.setCurrentPiece(pieceSaved);
+		saved = false;
+		dropping = false;
+		pieceSaved = null;
+		nextPiece = Piece.getRandomPiece();
+		freeFallIterations = 0;
+		
+		}
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public boolean isSaved() {
+		return saved;
 	}
 
 }
