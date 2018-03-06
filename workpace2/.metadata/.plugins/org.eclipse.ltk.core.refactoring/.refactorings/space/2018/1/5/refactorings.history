@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;Game2.java&apos; to &apos;spaceinvaders&apos;&#x0D;&#x0A;- Original project: &apos;space&apos;&#x0D;&#x0A;- Destination element: &apos;spaceinvaders&apos;&#x0D;&#x0A;- Original element: &apos;space.Game2.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" element1="/src&lt;space{Game2.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1517190898043" target="spaceinvaders-101-java-master/src/main/java/org/newdawn/spaceinvaders" units="1" version="1.0"/>
-</session>
